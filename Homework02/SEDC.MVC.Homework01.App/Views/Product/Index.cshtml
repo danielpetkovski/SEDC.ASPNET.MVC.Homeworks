@@ -1,0 +1,45 @@
+﻿@model List<ProductVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Products</h2>
+
+
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.Success
+    </div>
+}
+
+
+<div class="row">
+    <div class="col-md-5">
+        <a class="btn btn-primary" asp-controller="CreateProduct" asp-action="CreateProduct">Create product</a>
+    </div>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Description</th>
+            <th scope="col">Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <th scope="row">@product.Id</th>
+                <td>@product.Name</td>
+                <td>@product.Price $</td>
+                <td>@product.Description</td>
+                <td>@product.Category</td>
+            </tr>
+        }
+    </tbody>
+</table>
